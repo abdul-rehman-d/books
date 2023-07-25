@@ -8,8 +8,20 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function MainStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerShadowVisible: false,
+          headerTitleAlign: 'center',
+          headerTitle: 'All Books'
+        }}
+      />
+      <Stack.Screen
+        name="Details"
+        component={DetailsScreen}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
