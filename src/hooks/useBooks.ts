@@ -6,7 +6,7 @@ const MAX_RESULTS = 20;
 
 async function getAllBooks(startIndex: number) {
   const response = await api.get(
-    "/volumes?q=subject:inspirational" +
+    "/volumes?q=subject:fiction" +
     "&maxResults="+ MAX_RESULTS +
     "&startIndex=" + startIndex
   );
