@@ -12,58 +12,61 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* header */}
-      <Text style={styles.heading}>
-        {book.title}
-      </Text>
-      <View style={styles.publishLine}>
-        <Text style={styles.subtitle}>
-          <Text>{'Published from '}</Text>
-          <Text style={styles.subtitleDark}>{book.publisher}</Text>
+      <ScrollView
+        style={[styles.container, styles.containerScrollView]}
+        removeClippedSubviews={false}
+      >
+        {/* header */}
+        <Text style={styles.heading}>
+          {book.title}
         </Text>
-        <Text style={styles.subtitle}>
-          <Text>{book.publishedDate}</Text>
-        </Text>
-      </View>
+        <View style={styles.publishLine}>
+          <Text style={styles.subtitle}>
+            <Text>{'Published from '}</Text>
+            <Text style={styles.subtitleDark}>{book.publisher}</Text>
+          </Text>
+          <Text style={styles.subtitle}>
+            <Text>{book.publishedDate}</Text>
+          </Text>
+        </View>
 
-      {/* hero */}
-      <View style={[styles.imageWrapper, styles.leftRoundedBorder]}>
-        <Image
-          source={{ uri: book.thumbnail }}
-          style={[styles.image, styles.leftRoundedBorder]}
-        />
-      </View>
+        {/* hero */}
+        <View style={[styles.imageWrapper, styles.leftRoundedBorder]}>
+          <Image
+            source={{ uri: book.thumbnail }}
+            style={[styles.image, styles.leftRoundedBorder]}
+          />
+        </View>
 
-      {/* rating */}
-      <View style={styles.ratingWrapper}>
-        {
-          (book.ratingCount > 0 && book.rating > 0) && (
-            <View style={styles.ratingRow}>
-              <Text style={styles.ratingText}>{book.rating.toFixed(1)}</Text>
-              <StarRating
-                rating={book.rating}
-                onChange={()=>{}}
-                color='#FEB422'
-                starSize={20}
-                style={{ marginBottom: 5, marginLeft: 10 }}
-                starStyle={{ marginHorizontal: 1 }}
-                emptyColor='#eee'
-                enableSwiping={false}
-                animationConfig={{
-                  duration: 0,
-                  scale: 1,
-                }}
-              />
-            </View>
-          )
-        }
-        <Text style={styles.subtitle}>
-          {book.ratingCount ?? '0'} {book.ratingCount === 1 ? 'rating' : 'ratings'}
-        </Text>
-      </View>
+        {/* rating */}
+        <View style={styles.ratingWrapper}>
+          {
+            (book.ratingCount > 0 && book.rating > 0) && (
+              <View style={styles.ratingRow}>
+                <Text style={styles.ratingText}>{book.rating.toFixed(1)}</Text>
+                <StarRating
+                  rating={book.rating}
+                  onChange={()=>{}}
+                  color='#FEB422'
+                  starSize={20}
+                  style={{ marginBottom: 5, marginLeft: 10 }}
+                  starStyle={{ marginHorizontal: 1 }}
+                  emptyColor='#eee'
+                  enableSwiping={false}
+                  animationConfig={{
+                    duration: 0,
+                    scale: 1,
+                  }}
+                />
+              </View>
+            )
+          }
+          <Text style={styles.subtitle}>
+            {book.ratingCount ?? '0'} {book.ratingCount === 1 ? 'rating' : 'ratings'}
+          </Text>
+        </View>
 
-      {/* desc */}
-      <ScrollView>
+        {/* desc */}
         <Text style={styles.description}>{book.description ?? 'No Description'}</Text>
       </ScrollView>
     </SafeAreaView>
@@ -73,8 +76,11 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#fff',
+  },
+  containerScrollView: {
+    padding: 20,
+    overflow: 'visible',
   },
   heading: {
     fontSize: 40,
