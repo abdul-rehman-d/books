@@ -47,7 +47,7 @@ function HomeScreen({ route, navigation }: NativeStackScreenProps<RootStackParam
         onEndReachedThreshold={0.1}
         onEndReached={fetchNext}
       />
-      {isFetchingNext && <ActivityIndicator size="large" color="#333" style={styles.floatingLoader} />}
+      {isFetchingNext && <ActivityIndicator size="small" color="#333" style={styles.floatingLoader} />}
     </>
   );
 }
