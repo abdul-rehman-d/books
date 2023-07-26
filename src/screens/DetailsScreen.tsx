@@ -13,62 +13,59 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
-        style={[styles.container, styles.containerScrollView]}
-        removeClippedSubviews={false}
-      >
-        {/* header */}
-        <Text style={styles.heading}>
-          {book.title}
+      {/* header */}
+      <Text style={styles.heading}>
+        {book.title}
+      </Text>
+      <View style={styles.publishLine}>
+        <Text style={styles.subtitle}>
+          <Text>{'Published from '}</Text>
+          <Text style={styles.subtitleDark}>{book.publisher}</Text>
         </Text>
-        <View style={styles.publishLine}>
-          <Text style={styles.subtitle}>
-            <Text>{'Published from '}</Text>
-            <Text style={styles.subtitleDark}>{book.publisher}</Text>
-          </Text>
-          <Text style={styles.subtitle}>
-            <Text>{book.publishedDate}</Text>
-          </Text>
-        </View>
+        <Text style={styles.subtitle}>
+          <Text>{book.publishedDate}</Text>
+        </Text>
+      </View>
 
-        {/* hero */}
-        <View style={[styles.imageWrapper, styles.leftRoundedBorder]}>
-          <Animated.Image
-            source={{ uri: book.thumbnail }}
-            style={[styles.image, styles.leftRoundedBorder]}
-            sharedTransitionTag={`book-${book.id}`}
-          />
-        </View>
+      {/* hero */}
+      <View style={[styles.imageWrapper, styles.leftRoundedBorder]}>
+        <Animated.Image
+          source={{ uri: book.thumbnail }}
+          style={[styles.image, styles.leftRoundedBorder]}
+          sharedTransitionTag={`book-${book.id}`}
+        />
+      </View>
 
-        {/* rating */}
-        <View style={styles.ratingWrapper}>
-          {
-            (book.ratingCount > 0 && book.rating > 0) && (
-              <View style={styles.ratingRow}>
-                <Text style={styles.ratingText}>{book.rating.toFixed(1)}</Text>
-                <StarRating
-                  rating={book.rating}
-                  onChange={()=>{}}
-                  color='#FEB422'
-                  starSize={20}
-                  style={{ marginBottom: 5, marginLeft: 10 }}
-                  starStyle={{ marginHorizontal: 1 }}
-                  emptyColor='#eee'
-                  enableSwiping={false}
-                  animationConfig={{
-                    duration: 0,
-                    scale: 1,
-                  }}
-                />
-              </View>
-            )
-          }
-          <Text style={styles.subtitle}>
-            {book.ratingCount ?? '0'} {book.ratingCount === 1 ? 'rating' : 'ratings'}
-          </Text>
-        </View>
+      {/* rating */}
+      <View style={styles.ratingWrapper}>
+        {
+          (book.ratingCount > 0 && book.rating > 0) && (
+            <View style={styles.ratingRow}>
+              <Text style={styles.ratingText}>{book.rating.toFixed(1)}</Text>
+              <StarRating
+                rating={book.rating}
+                onChange={()=>{}}
+                color='#FEB422'
+                starSize={20}
+                style={{ marginBottom: 5, marginLeft: 10 }}
+                starStyle={{ marginHorizontal: 1 }}
+                emptyColor='#eee'
+                enableSwiping={false}
+                animationConfig={{
+                  duration: 0,
+                  scale: 1,
+                }}
+              />
+            </View>
+          )
+        }
+        <Text style={styles.subtitle}>
+          {book.ratingCount ?? '0'} {book.ratingCount === 1 ? 'rating' : 'ratings'}
+        </Text>
+      </View>
 
-        {/* desc */}
+      {/* desc */}
+      <ScrollView>
         <Text style={styles.description}>{book.description ?? 'No Description'}</Text>
       </ScrollView>
     </SafeAreaView>
@@ -79,10 +76,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  containerScrollView: {
     padding: 20,
-    overflow: 'visible',
   },
   heading: {
     fontSize: 40,
@@ -115,7 +109,7 @@ const styles = StyleSheet.create({
   },
   image: {
     margin: 0,
-    width: '85%',
+    width: '90%',
     height: '100%',
     objectFit: 'cover'
   },
