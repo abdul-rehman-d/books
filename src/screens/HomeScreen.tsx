@@ -37,11 +37,11 @@ function HomeScreen({ route, navigation }: NativeStackScreenProps<RootStackParam
         numColumns={2}
         containerStyle={styles.container}
         renderItem={({item, i}: {item: Book, i: number}) => (
-          <SharedElement id={books[0].id}>
+          <SharedElement id={item.id}>
             <BookPreview
               index={0}
-              book={books[0]}
-              onPress={() => navigation.navigate('Details', { book: books[0] })}
+              book={item}
+              onPress={() => navigation.navigate('Details', { book: item })}
             />
           </SharedElement>
         )}
