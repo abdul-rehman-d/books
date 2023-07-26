@@ -11,8 +11,10 @@ This app uses [Google Books API](https://www.googleapis.com/books/v1/) for a lis
 
 ### Screenshots
 #### Books List Screen with Masonary Layout
-![Books List Screen](/screenshots/books-list.jpg "Books List Screen")
+<img src="./screenshots/books-list.jpg" alt="Books List Screen" height="500" width="auto" />
+
 #### Book Detail Screen
-![Book Detail Screen](/screenshots/book-detail.jpg "Book Detail Screen")
+<img src="./screenshots/book-detail.jpg" alt="Book Details Screen" height="500" width="auto" />
+
 #### Smooth Page Change Animation with Shared Element Transition and Animated Title and Description
 ![Shared Element Transition](/screenshots/shared-element.gif "Shared Element Transition")
