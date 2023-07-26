@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import {Dimensions} from 'react-native';
+import Animated from 'react-native-reanimated';
 const windowWidth = Dimensions.get('window').width;
 
 const imageWidth = (windowWidth - 30) / 2
@@ -30,13 +31,15 @@ function BookPreview({ book, index, onPress }: {
         aspectRatio,
       }
     ]}>
-      <Image
+      <Animated.Image
         source={{ uri: book.thumbnail }}
         style={{
           aspectRatio,
           width: '100%',
+          borderRadius: 10,
         }}
         resizeMode='cover'
+        sharedTransitionTag={`book-${book.id}`}
       />
     </TouchableOpacity>
   );

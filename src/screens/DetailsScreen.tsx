@@ -1,6 +1,7 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import StarRating from 'react-native-star-rating-widget';
+import Animated from 'react-native-reanimated';
 
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
@@ -32,9 +33,10 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
 
         {/* hero */}
         <View style={[styles.imageWrapper, styles.leftRoundedBorder]}>
-          <Image
+          <Animated.Image
             source={{ uri: book.thumbnail }}
             style={[styles.image, styles.leftRoundedBorder]}
+            sharedTransitionTag={`book-${book.id}`}
           />
         </View>
 
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
   },
 
   imageWrapper: {
-    marginBottom: 20,
+    marginVertical: 20,
     position: 'relative',
     marginRight: -20,
     height: 300,
@@ -112,6 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f7f7f7',
   },
   image: {
+    margin: 0,
     width: '85%',
     height: '100%',
     objectFit: 'cover'
