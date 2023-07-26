@@ -8,7 +8,8 @@ async function getAllBooks(startIndex: number) {
   const response = await api.get(
     "/volumes?q=subject:fiction" +
     "&maxResults="+ MAX_RESULTS +
-    "&startIndex=" + startIndex
+    "&startIndex=" + startIndex +
+    "&orderBy=newest"
   );
   if (response.status === 200) {
     const books: Book[] = response.data.items
