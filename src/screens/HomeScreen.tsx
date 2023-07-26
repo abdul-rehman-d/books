@@ -4,6 +4,7 @@ import MasonryList from '@react-native-seoul/masonry-list';
 import { RootStackParamList } from '../types/stack';
 import useBooks from '../hooks/useBooks';
 import BookPreview from '../components/BookPreview';
+import { SharedElement } from 'react-navigation-shared-element';
 
 function HomeScreen({ route, navigation }: NativeStackScreenProps<RootStackParamList, 'Home'>) {
   const {
@@ -36,11 +37,13 @@ function HomeScreen({ route, navigation }: NativeStackScreenProps<RootStackParam
         numColumns={2}
         containerStyle={styles.container}
         renderItem={({item, i}: {item: Book, i: number}) => (
-          <BookPreview
-            index={i}
-            book={item}
-            onPress={() => navigation.navigate('Details', { book: item })}
-          />
+          <SharedElement id={books[0].id}>
+            <BookPreview
+              index={0}
+              book={books[0]}
+              onPress={() => navigation.navigate('Details', { book: books[0] })}
+            />
+          </SharedElement>
         )}
         refreshing={isRefreshing}
         onRefresh={refresh}

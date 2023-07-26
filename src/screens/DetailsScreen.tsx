@@ -6,6 +6,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import type { RootStackParamList } from '../types/stack';
 import { colors } from '../styles/theme';
+import { SharedElement } from 'react-navigation-shared-element';
 
 function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackParamList, 'Details'>) {
   const book = route.params.book;
@@ -32,10 +33,12 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
 
         {/* hero */}
         <View style={[styles.imageWrapper, styles.leftRoundedBorder]}>
-          <Image
-            source={{ uri: book.thumbnail }}
-            style={[styles.image, styles.leftRoundedBorder]}
-          />
+          <SharedElement id={book.id}>
+            <Image
+              source={{ uri: book.thumbnail }}
+              style={[styles.image, styles.leftRoundedBorder]}
+            />
+          </SharedElement>
         </View>
 
         {/* rating */}
