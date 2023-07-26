@@ -10,7 +10,7 @@ function BookPreview({ book, index, onPress }: {
   index: number,
   onPress: () => void,
 }) {
-  const [aspectRatio, setAspectRatio] = useState('1');
+  const [aspectRatio, setAspectRatio] = useState<string>('1');
 
   useEffect(() => {
     if (book.thumbnail) {
@@ -23,7 +23,11 @@ function BookPreview({ book, index, onPress }: {
   }, [])
 
   return (
-    <TouchableOpacity onPress={onPress} style={{...styles.container, marginLeft: index%2===0?0:10}}>
+    <TouchableOpacity onPress={onPress} style={{
+      ...styles.container,
+      marginLeft: index%2===0?0:10,
+      aspectRatio,
+    }}>
       <Image
         source={{ uri: book.thumbnail }}
         style={{
