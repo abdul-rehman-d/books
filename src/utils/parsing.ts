@@ -8,5 +8,7 @@ export function parseBook(book: RawBook): Book {
     description: book.volumeInfo.description,
     pageCount: book.volumeInfo.pageCount,
     thumbnail: book.volumeInfo.imageLinks?.thumbnail,
+    rating: book.volumeInfo.averageRating,
+    ratingCount: book.volumeInfo.ratingsCount,
   };
 }

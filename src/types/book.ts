@@ -71,4 +71,6 @@ type Book = {
   description: string;
   pageCount: number;
   thumbnail: string;
+  rating: number;
+  ratingCount: number;
 }
