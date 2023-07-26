@@ -23,11 +23,13 @@ function BookPreview({ book, index, onPress }: {
   }, [])
 
   return (
-    <TouchableOpacity onPress={onPress} style={{
-      ...styles.container,
-      marginLeft: index%2===0?0:10,
-      aspectRatio,
-    }}>
+    <TouchableOpacity onPress={onPress} style={[
+      styles.container,
+      {
+        marginLeft: index % 2 === 0 ? 0 : 10,
+        aspectRatio,
+      }
+    ]}>
       <Image
         source={{ uri: book.thumbnail }}
         style={{
