@@ -9,6 +9,7 @@ async function getAllBooks(startIndex: number) {
     "/volumes?q=subject:fiction" +
     "&maxResults="+ MAX_RESULTS +
     "&startIndex=" + startIndex +
+    "&langRestrict=en" +
     "&orderBy=newest"
   );
   if (response.status === 200) {

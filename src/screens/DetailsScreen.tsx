@@ -2,11 +2,14 @@ import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import StarRating from 'react-native-star-rating-widget';
 import Animated from 'react-native-reanimated';
+import * as Animatble from 'react-native-animatable';
 
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import type { RootStackParamList } from '../types/stack';
 import { colors } from '../styles/theme';
+
+const DELAY = 300;
 
 function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackParamList, 'Details'>) {
   const book = route.params.book;
@@ -14,10 +17,10 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
   return (
     <SafeAreaView style={styles.container}>
       {/* header */}
-      <Text style={styles.heading}>
+      <Animatble.Text style={styles.heading} animation="fadeInLeft" delay={DELAY}>
         {book.title}
-      </Text>
-      <View style={styles.publishLine}>
+      </Animatble.Text>
+      <Animatble.View style={styles.publishLine} animation="fadeInLeft" delay={DELAY*2}>
         <Text style={styles.subtitle}>
           <Text>{'Published from '}</Text>
           <Text style={styles.subtitleDark}>{book.publisher}</Text>
@@ -25,7 +28,7 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
         <Text style={styles.subtitle}>
           <Text>{book.publishedDate}</Text>
         </Text>
-      </View>
+      </Animatble.View>
 
       {/* hero */}
       <View style={[styles.imageWrapper, styles.leftRoundedBorder]}>
@@ -37,7 +40,7 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
       </View>
 
       {/* rating */}
-      <View style={styles.ratingWrapper}>
+      <Animatble.View style={styles.ratingWrapper} animation="fadeInLeft" delay={DELAY*2}>
         {
           (book.ratingCount > 0 && book.rating > 0) && (
             <View style={styles.ratingRow}>
@@ -62,11 +65,13 @@ function DetailsScreen({ route, navigation }: NativeStackScreenProps<RootStackPa
         <Text style={styles.subtitle}>
           {book.ratingCount ?? '0'} {book.ratingCount === 1 ? 'rating' : 'ratings'}
         </Text>
-      </View>
+      </Animatble.View>
 
       {/* desc */}
       <ScrollView>
-        <Text style={styles.description}>{book.description ?? 'No Description'}</Text>
+        <Animatble.Text style={styles.description} animation="fadeIn" delay={DELAY*3}>
+          {book.description ?? 'No Description'}
+        </Animatble.Text>
       </ScrollView>
     </SafeAreaView>
   );
